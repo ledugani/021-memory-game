@@ -1,6 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Card from './components/card'
 
 export default function App() {
+  const [flipped, setFlipped] = useState([])
+
+  const handleClick = (id) => {
+    setFlipped([ ...flipped, id ])
+  }
+
   return (
     <div>
       <h2>Can you remember where the cards are?</h2>
