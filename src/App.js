@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Board from './components/board'
 
-initializeDeck from './deck'
+import initializeDeck from './deck'
+
 export default function App() {
   const [cards, setCards] = useState([])
   const [flipped, setFlipped] = useState([])
 
   useEffect(() => {
-    setCards(initializedDeck())
+    setCards(initializeDeck())
   }, [])
 
   const handleClick = (id) => {
