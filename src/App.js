@@ -16,8 +16,14 @@ export default function App() {
   }, [])
 
   useEffect(() => {
+    const preloadImages = () => {
+      cards.map(card => {
+        const src = `/img/${card.type}.png`
+        return new Image().src = src
+      })
+    }
     preloadImages()
-  }, cards)
+  }, [cards.join(",")])
 
   useEffect(() => {
     const resizeListener = window.addEventListener('resize', resizeBoard)
@@ -43,18 +49,12 @@ export default function App() {
     }
   }
 
-  const preloadImages = () => {
-    cards.map(card => {
-      const src = `/img/${card.type}.png`
-      new Image().src = src
-    })
-  }
-
   const resetCards = () => {
     setFlipped([])
     setDisabled(false)
   }
   const sameCardClicked = (id) => flipped.includes(id);
+
   const isMatch = (id) => {
     const clickedCard = cards.find(card => card.id === id)
     const flippedCard = cards.find(card => flipped[0] === card.id)
